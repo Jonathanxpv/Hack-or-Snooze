@@ -38,23 +38,22 @@
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
   <div class = "main-nav-links hidden">
-    "|"
+    |
     <a class = "nav-link" href = "#" id = "nav-submit-story">Submit</a>
-    "|"
-    <a class="Nav-link" href = "#" id = "nav-favorites">Favorites</a>
-    "|"
+    |
+    <a class="nav-link" href = "#" id = "nav-favorites">Favorites</a>
+    |
     <a class = "nav-link" href = "#" id = "nav-my-stories">My Stories</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
-    <a class="hidden" id="nav-logout" href="#">
-      <small>(logout)</small></a>
+    <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
 
 <!-- area for stories (all stories, user stories, favorites) -->
-<section class="stories-container container">
+<section id="atories-container" class="stories-container container">
 <!--Form for submitting new story-->
 <form action class = "hidden" id = "submit-form">
   <div>
@@ -62,8 +61,12 @@
     <input id = "create-author" required placeholder = "Author Name">
   </div>
   <div>
-    <label for ="create-url">URL</label>
-    <input id ="create-url" required type="url" placeholder = "Story URL">
+    <label for ="create-title">Title</label>
+    <input id ="create-title" required  placeholder = "Story Title">
+  </div>
+  <div>
+    <label for="create-url">url</label>
+    <input id="create-url" required type="url" placeholder="story url">
   </div>
   <button type = "submit">Submit</button>
   <hr>
@@ -73,6 +76,13 @@
 
   <!-- List of all stories -->
   <ol id="all-stories-list" class="stories-list"></ol>
+
+  <!-- List of stories favorited by the user -->
+  <ol id="favorited-stories" class="hidden stories-list"></ol>
+
+  <!-- List of stories by the user -->
+  <ol id="my-stories" class="hidden stories-list"></ol>
+
 
 </section>
 

@@ -14,6 +14,8 @@ function navAllStories(evt) {
 
 $body.on("click", "#nav-all", navAllStories);
 
+
+
 function navSubmitStoryClick(evt) {
   console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
@@ -21,7 +23,7 @@ function navSubmitStoryClick(evt) {
   $submitForm.show();
 }
 
-$navSubmitStory.on("click", navSubmitStoryClick);
+$navSubmitStory.on("click", "#nav-submit-story", navSubmitStoryClick);
 
 function navFavoritesClick(evt) {
   console.debug("navFavoritesClick", evt);
@@ -34,7 +36,7 @@ $body.on("click", "#nav-favorites", navFavoritesClick);
 function navMyStories(evt) {
   console.debug("navMyStories", evt);
   hidePageComponents();
-  putUserStoriesOnPage();
+  putStoriesOnPage();
   $ownStories.show();
 }
 
