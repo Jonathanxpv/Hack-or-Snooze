@@ -54,7 +54,8 @@
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section id="atories-container" class="stories-container container">
-<!--Form for submitting new story-->
+
+  <!--Form for submitting new story-->
 <form action class = "hidden" id = "submit-form">
   <div>
     <label for ="create-author">Author</label>
@@ -71,7 +72,8 @@
   <button type = "submit">Submit</button>
   <hr>
 </form>
-  <!-- loading message (removed by JS after stories loaded) -->
+  
+<!-- loading message (removed by JS after stories loaded) -->
   <div id="stories-loading-msg">Loading&hellip;</div>
 
   <!-- List of all stories -->
@@ -125,6 +127,18 @@
     </div>
     <button type="submit">create account</button>
   </form>
+</section>
+
+<!-- User profile -->
+<section id="user-profile" class="hidden">
+  <div class="user-profile-box container">
+    <h4>User Profile Info</h4>
+    <section>
+      <div>Name: <span id="profile-name">Name:</span></div>
+      <div>Username: <span id="profile-username">Username:</span></div>
+      <div>Account Created: <span id="profile-account-date"></span></div>
+    </section>
+  </div>
 </section>
 
 <!-- Library JS & our JS -->

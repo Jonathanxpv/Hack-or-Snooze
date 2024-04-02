@@ -25,7 +25,7 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return new URL(this.url).host
+    return new URL(this.url).host;
   }
 }
 
@@ -78,7 +78,7 @@ class StoryList {
       const response = await axios({
         method: "POST",
         url: '${BASE_URL}/stories',
-        data: {token, story: {title, author, url}}
+        data: {token, story: {title, author, url}},
       });
 
       const story = new Story(response.data.story);
@@ -98,7 +98,7 @@ async removeStory(user, storyId) {
     data: {token: user.loginToken}
   });
 
-  this.stories = this.stories.filter(story => story.storyId !== storyId)
+  this.stories = this.stories.filter(story => story.storyId !== storyId);
 
   user.ownStories = user.ownStories.filter(s => s.storyId !== storyId);
   user.favorites = user.favorites.filter(s => s.storyId !== storyId);
@@ -233,7 +233,7 @@ class User {
     const method = newState === "add" ? "POST" : "Delete";
     const token = this.loginToken;
     await axios({
-      url: '${BASE_URL}/users/${this.username}/favorites/${story.storyId}',
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
       method: method,
       data: {token},
     });
