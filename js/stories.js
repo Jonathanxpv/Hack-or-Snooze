@@ -21,7 +21,7 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story, showDeleteBtn = false) {
-  // console.debug("generateStoryMarkup", story);
+  
 
   const hostName = story.getHostName();
   const showStar = Boolean(currentUser);
@@ -61,20 +61,27 @@ function getStarHTML(story, user) {
 
 /** Gets list of stories from server, generates their HTML, and puts on page. */
 
-function putStoriesOnPage() {
-  console.debug("putStoriesOnPage");
+async function putStoriesOnPage() {
+  try {
+    console.debug("putStoriesOnPage");
 
-  $allStoriesList.empty();
+    $allStoriesList.empty();
 
-  // loop through all of our stories and generate HTML for them
-  for (let story of storyList.stories) 
-     story = generateStoryMarkup(story);
-    $allStoriesList.append(story);
-  
+    // Fetch stories from the server
+    const storyList = await StoryList.getStories();
 
-  $allStoriesList.show();
+    // Loop through all stories and generate HTML for them
+    for (let story of storyList.stories) {
+      const $story = generateStoryMarkup(story);
+      $allStoriesList.append($story);
+    }
+   
+
+    $allStoriesList.show();
+  } catch (error) {
+    console.error("Error putting stories on page:", error);
+  }
 }
-
 /** Handle deleting a story. */
 
 async function deleteStory(evt) {
@@ -86,7 +93,7 @@ async function deleteStory(evt) {
   await storyList.removeStory(currentUser, storyId);
 
   // re-generate story list
-  await putUserStoriesOnPage();
+   putUserStoriesOnPage();
 }
 
 $ownStories.on("click", ".trash-can", deleteStory);
@@ -99,7 +106,7 @@ async function submitNewStory(evt) {
 const title = $("#create-title").val();
 const url = $("#create-url").val();
 const author = $("#create-author").val();
-const username = currentUser.username
+const username = currentUser.username;
 const storyData = {title, url, author, username};
 
 const story = await storyList.addStory(currentUser, storyData);
@@ -111,7 +118,8 @@ $submitForm.slideUp("slow");
 $submitForm.trigger("reset");
 }
 
-$submitForm.on("submit", submitNewStory);
+$submitForm.on("click", submitNewStory);
+
 
 /******************************************************************************
  * Functionality for list of user's own stories

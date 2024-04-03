@@ -23,7 +23,10 @@ function navSubmitStoryClick(evt) {
   $submitForm.show();
 }
 
-$navSubmitStory.on("click", "#nav-submit-story", navSubmitStoryClick);
+
+$body.on("click", "#nav-submit-story", navSubmitStoryClick);
+
+
 
 function navFavoritesClick(evt) {
   console.debug("navFavoritesClick", evt);
