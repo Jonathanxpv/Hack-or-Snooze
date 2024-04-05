@@ -2,7 +2,7 @@
 
 // This is the global list of the stories, an instance of StoryList
 let storyList;
-let story;
+// let story;
 
 /** Get and show stories when site first loads. */
 
@@ -118,7 +118,7 @@ $submitForm.slideUp("slow");
 $submitForm.trigger("reset");
 }
 
-$submitForm.on("click", submitNewStory);
+$submitForm.on("submit", submitNewStory);
 
 
 /******************************************************************************
